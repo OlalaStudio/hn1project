@@ -1,0 +1,24 @@
+PODS:
+  - EZLoadingActivity (1.01)
+  - GIFImageView (0.1.0)
+  - Google-Mobile-Ads-SDK (7.19.0)
+  - MBRateApp (0.1.3)
+  - SCLAlertView (0.7.0)
+
+DEPENDENCIES:
+  - EZLoadingActivity
+  - GIFImageView
+  - Google-Mobile-Ads-SDK
+  - MBRateApp
+  - SCLAlertView
+
+SPEC CHECKSUMS:
+  EZLoadingActivity: edd7e387e5197b116ce2cccb3fd747ababc2a510
+  GIFImageView: cd6a500b9bac1942cb66b73452b97baa6e75280d
+  Google-Mobile-Ads-SDK: d1bcdbd8347a105a687345b8511701172a5074e9
+  MBRateApp: 38134043439abe632fcbb8c8aa0d1c5846331275
+  SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
+
+PODFILE CHECKSUM: 51daa3075f532d83338d320c5cec7a5298604681
+
+COCOAPODS: 1.1.1
