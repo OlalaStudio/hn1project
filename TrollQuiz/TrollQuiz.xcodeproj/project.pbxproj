@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		678544CF848F773BF6E3A1EF /* Pods_TrollQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF4E5AE81546F18E3B15C0C /* Pods_TrollQuiz.framework */; };
+		678544CF848F773BF6E3A1EF /* Pods_TrollQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF4E5AE81546F18E3B15C0C /* Pods_TrollQuiz.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		BF15E5341F39BB8F00144EF2 /* TCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15E5331F39BB8F00144EF2 /* TCategoryViewController.swift */; };
 		BF15E5391F39C60C00144EF2 /* diadanhlichsu.png in Resources */ = {isa = PBXBuildFile; fileRef = BF15E5351F39C60C00144EF2 /* diadanhlichsu.png */; };
 		BF15E53A1F39C60C00144EF2 /* dongthucvat.png in Resources */ = {isa = PBXBuildFile; fileRef = BF15E5361F39C60C00144EF2 /* dongthucvat.png */; };
@@ -103,6 +103,12 @@
 		BFCCF4281F29D8B30008C1D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCCF4271F29D8B30008C1D5 /* Assets.xcassets */; };
 		BFCCF42B1F29D8B30008C1D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCCF4291F29D8B30008C1D5 /* LaunchScreen.storyboard */; };
 		BFCCF4341F29D8DF0008C1D5 /* Main_ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCCF4321F29D8DF0008C1D5 /* Main_ipad.storyboard */; };
+		EA0EA6C71F79EE6D00098EC5 /* CommonDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EA6C61F79EE6D00098EC5 /* CommonDefines.swift */; };
+		EA268E651F7A5481004A457B /* bamvaotoi.png in Resources */ = {isa = PBXBuildFile; fileRef = EA268E621F7A5481004A457B /* bamvaotoi.png */; };
+		EA268E661F7A5481004A457B /* clickme.png in Resources */ = {isa = PBXBuildFile; fileRef = EA268E631F7A5481004A457B /* clickme.png */; };
+		EA268E671F7A5481004A457B /* taptostart.png in Resources */ = {isa = PBXBuildFile; fileRef = EA268E641F7A5481004A457B /* taptostart.png */; };
+		EAC159BA1F70F09500A80586 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC159B91F70F09500A80586 /* Reachability.m */; };
+		EAC159BC1F70FA2500A80586 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = EAC159BB1F70FA2500A80586 /* setting.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,7 +204,7 @@
 		BFCBA2BE1F30AF620097E0BD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BFCBA2C01F30AF680097E0BD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BFCBA2C21F30AF700097E0BD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		BFCCF41D1F29D8B30008C1D5 /* DoVui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoVui.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFCCF41D1F29D8B30008C1D5 /* TrollQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrollQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCCF4201F29D8B30008C1D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCCF4221F29D8B30008C1D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BFCCF4251F29D8B30008C1D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -208,6 +214,13 @@
 		BFCCF4331F29D8DF0008C1D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_ipad.storyboard; sourceTree = "<group>"; };
 		CFF4E5AE81546F18E3B15C0C /* Pods_TrollQuiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrollQuiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBF9B9179EB655554722478 /* Pods-TrollQuiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrollQuiz.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrollQuiz/Pods-TrollQuiz.release.xcconfig"; sourceTree = "<group>"; };
+		EA0EA6C61F79EE6D00098EC5 /* CommonDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDefines.swift; sourceTree = "<group>"; };
+		EA268E621F7A5481004A457B /* bamvaotoi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bamvaotoi.png; sourceTree = "<group>"; };
+		EA268E631F7A5481004A457B /* clickme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clickme.png; sourceTree = "<group>"; };
+		EA268E641F7A5481004A457B /* taptostart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taptostart.png; sourceTree = "<group>"; };
+		EAC159B81F70F09500A80586 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		EAC159B91F70F09500A80586 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EAC159BB1F70FA2500A80586 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +319,7 @@
 		BF5401E21F2B234B005E56FC /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				EAC159BB1F70FA2500A80586 /* setting.png */,
 				BF15E5351F39C60C00144EF2 /* diadanhlichsu.png */,
 				BF15E5361F39C60C00144EF2 /* dongthucvat.png */,
 				BF15E5371F39C60C00144EF2 /* dovuihainao.png */,
@@ -334,6 +348,9 @@
 		BF5401EF1F2B234B005E56FC /* Emoticon */ = {
 			isa = PBXGroup;
 			children = (
+				EA268E621F7A5481004A457B /* bamvaotoi.png */,
+				EA268E631F7A5481004A457B /* clickme.png */,
+				EA268E641F7A5481004A457B /* taptostart.png */,
 				BF5401F01F2B234B005E56FC /* ask.png */,
 				BF5401F11F2B234B005E56FC /* ask1.png */,
 				BF5401F21F2B234B005E56FC /* ask2.png */,
@@ -417,6 +434,7 @@
 		BFCCF4141F29D8B20008C1D5 = {
 			isa = PBXGroup;
 			children = (
+				EAC159B71F70F09500A80586 /* Setting */,
 				BF5401DB1F2B234B005E56FC /* Data */,
 				BF5401DD1F2B234B005E56FC /* DBManager */,
 				BF5401E01F2B234B005E56FC /* Resource */,
@@ -430,7 +448,7 @@
 		BFCCF41E1F29D8B30008C1D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BFCCF41D1F29D8B30008C1D5 /* DoVui.app */,
+				BFCCF41D1F29D8B30008C1D5 /* TrollQuiz.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -447,6 +465,7 @@
 				BF5402711F2B2356005E56FC /* TResultViewController.swift */,
 				BF54026C1F2B2356005E56FC /* PlaySoundManager.swift */,
 				BFB6FD931F2C8F0F000CCF61 /* TSetupViewController.swift */,
+				EA0EA6C61F79EE6D00098EC5 /* CommonDefines.swift */,
 				BFCCF4241F29D8B30008C1D5 /* Main.storyboard */,
 				BFCCF4321F29D8DF0008C1D5 /* Main_ipad.storyboard */,
 				BF54026E1F2B2356005E56FC /* TDatabaseBridgeHeader.h */,
@@ -455,6 +474,15 @@
 				BFCCF42C1F29D8B30008C1D5 /* Info.plist */,
 			);
 			path = TrollQuiz;
+			sourceTree = "<group>";
+		};
+		EAC159B71F70F09500A80586 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				EAC159B81F70F09500A80586 /* Reachability.h */,
+				EAC159B91F70F09500A80586 /* Reachability.m */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,7 +505,7 @@
 			);
 			name = TrollQuiz;
 			productName = TrollQuiz;
-			productReference = BFCCF41D1F29D8B30008C1D5 /* DoVui.app */;
+			productReference = BFCCF41D1F29D8B30008C1D5 /* TrollQuiz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -531,6 +559,7 @@
 				BF5402421F2B234B005E56FC /* layer1.png in Resources */,
 				BF5402541F2B234B005E56FC /* yeah.png in Resources */,
 				BFB6FD981F2C90CB000CCF61 /* btbangxephang1.png in Resources */,
+				EAC159BC1F70FA2500A80586 /* setting.png in Resources */,
 				BF54024D1F2B234B005E56FC /* oach.png in Resources */,
 				BF5402601F2B234B005E56FC /* background2.png in Resources */,
 				BF15E53A1F39C60C00144EF2 /* dongthucvat.png in Resources */,
@@ -569,11 +598,14 @@
 				BF5402321F2B234B005E56FC /* music_on.png in Resources */,
 				BFCCF42B1F29D8B30008C1D5 /* LaunchScreen.storyboard in Resources */,
 				BF5402451F2B234B005E56FC /* layer4.png in Resources */,
+				EA268E651F7A5481004A457B /* bamvaotoi.png in Resources */,
 				BFCCF4341F29D8DF0008C1D5 /* Main_ipad.storyboard in Resources */,
+				EA268E661F7A5481004A457B /* clickme.png in Resources */,
 				BF5402341F2B234B005E56FC /* ovanbutton.png in Resources */,
 				BF54023A1F2B234B005E56FC /* ask2.png in Resources */,
 				BF5402391F2B234B005E56FC /* ask1.png in Resources */,
 				BF54024C1F2B234B005E56FC /* lol.png in Resources */,
+				EA268E671F7A5481004A457B /* taptostart.png in Resources */,
 				BF5402491F2B234B005E56FC /* loss1.png in Resources */,
 				BFCCF4281F29D8B30008C1D5 /* Assets.xcassets in Resources */,
 				BF54026B1F2B234B005E56FC /* soundresource.bundle in Resources */,
@@ -651,11 +683,13 @@
 				BF5402761F2B2356005E56FC /* TResultViewController.swift in Sources */,
 				BFB6FD941F2C8F0F000CCF61 /* TSetupViewController.swift in Sources */,
 				BF5402751F2B2356005E56FC /* TMainViewController.swift in Sources */,
+				EAC159BA1F70F09500A80586 /* Reachability.m in Sources */,
 				BF5402731F2B2356005E56FC /* TCorrectViewController.swift in Sources */,
 				BF5402741F2B2356005E56FC /* TEndGameViewController.swift in Sources */,
 				BF15E5341F39BB8F00144EF2 /* TCategoryViewController.swift in Sources */,
 				BF54022A1F2B234B005E56FC /* TDatabaseManager.m in Sources */,
 				BFCCF4231F29D8B30008C1D5 /* ViewController.swift in Sources */,
+				EA0EA6C71F79EE6D00098EC5 /* CommonDefines.swift in Sources */,
 				BFCCF4211F29D8B30008C1D5 /* AppDelegate.swift in Sources */,
 				BF5402721F2B2356005E56FC /* PlaySoundManager.swift in Sources */,
 			);
@@ -791,11 +825,13 @@
 			baseConfigurationReference = 4DACBC8891EA42915809EB41 /* Pods-TrollQuiz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KREB2MXHVA;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = TrollQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.OlaStudio.HoiNgu;
-				PRODUCT_NAME = DoVui;
+				PRODUCT_NAME = TrollQuiz;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -805,11 +841,13 @@
 			baseConfigurationReference = DCBF9B9179EB655554722478 /* Pods-TrollQuiz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = KREB2MXHVA;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = TrollQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.OlaStudio.HoiNgu;
-				PRODUCT_NAME = DoVui;
+				PRODUCT_NAME = TrollQuiz;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -10,5 +10,6 @@
 #define TDatabaseBridgeHeader_h
 
 #import "TDatabaseManager.h"
+#import "Reachability.h"
 
 #endif /* TDatabaseBridgeHeader_h */

@@ -49,13 +49,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = viewcontroller
         
         UserDefaults.standard.register(defaults: ["MUSIC_ON":true])
-        UserDefaults.standard.register(defaults: ["START_INDEX":0])
         UserDefaults.standard.register(defaults: ["HIGH_SCORE":0])
         UserDefaults.standard.register(defaults: ["RATED":false])
         
+        UserDefaults.standard.register(defaults: ["START_INDEX":0])
+        UserDefaults.standard.register(defaults: ["START_INDEX_DTV":0])
+        UserDefaults.standard.register(defaults: ["START_INDEX_KTTD":0])
+        UserDefaults.standard.register(defaults: ["START_INDEX_DDLS":0])
+        
+        //register notification access
+        let noticategory = UIUserNotificationCategory.init()
+        let notiset = NSSet.init(object: noticategory)
+        
+        let notisetting = UIUserNotificationSettings.init(types: UIUserNotificationType.alert, categories: notiset as? Set<UIUserNotificationCategory>)
+        UIApplication.shared.registerUserNotificationSettings(notisetting)
+        
         return true
     }
-
+    
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        let state = UIApplication.shared.applicationState
+        
+        if (state == UIApplicationState.active) {
+            UIApplication.shared.cancelLocalNotification(notification)
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -76,6 +95,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        print("Application will terminate")
+        print("Register notification 2h later")
+        
+        //UIApplication.shared.cancelAllLocalNotifications()
+        //UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
 

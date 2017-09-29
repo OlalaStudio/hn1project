@@ -25,6 +25,8 @@ class TEndGameViewController: UIViewController, GADBannerViewDelegate, GADInters
     @IBOutlet weak var txtYourScore: UILabel!
     @IBOutlet weak var txtHighScore: UILabel!
     
+    var catequiz: CategoryQuiz = CategoryQuiz.dovuihainao
+    
     var yourScore = 0
     var highScore = 0
     
@@ -40,36 +42,18 @@ class TEndGameViewController: UIViewController, GADBannerViewDelegate, GADInters
         
         highScore = UserDefaults.standard.integer(forKey: "HIGH_SCORE")
         
+        yourScore = highScore + 1
         if (yourScore > highScore) {
             highScore = yourScore
             
             UserDefaults.standard.set(highScore, forKey: "HIGH_SCORE")
             txtEnd.text = "High score!.\nChúc mừng bạn"
             
-            //identifier
-            let bestScoreInt = GKScore(leaderboardIdentifier: "com.Ola.DoVui")
-            bestScoreInt.value = Int64(highScore)
-            GKScore.report([bestScoreInt]) { (error) in
-                if error != nil {
-                    print(error!.localizedDescription)
-                }
-                else {
-                    print("Best Score submitted to your Leaderboard!")
-                    let appearance = SCLAlertView.SCLAppearance(
-                        showCloseButton: false
-                    )
-                    
-                    let alertView = SCLAlertView(appearance: appearance)
-                    
-                    alertView.addButton("Xem Bảng Xếp Hạng", action: {
-                        self.show_leaderboard()
-                    })
-                    alertView.addButton("Bỏ qua", action: {
-
-                    })
-                    
-                    alertView.showSuccess("High score!", subTitle: "Bạn vừa đạt mức high score. Xem vị trí của bạn trên bảng xếp hạng")
-                }
+            let rConnection = Reachability.forInternetConnection()
+            let status = rConnection?.currentReachabilityStatus()
+            
+            if (status != NotReachable && GKLocalPlayer.localPlayer().isAuthenticated == true) {
+                commitHighScore()
             }
         }
         else{
@@ -108,7 +92,7 @@ class TEndGameViewController: UIViewController, GADBannerViewDelegate, GADInters
     override func viewWillAppear(_ animated: Bool) {
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
+//        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
         adsBanner.load(request)
     }
     
@@ -145,6 +129,59 @@ class TEndGameViewController: UIViewController, GADBannerViewDelegate, GADInters
     
     func setYourScore(score: NSInteger) -> Void {
         yourScore = score
+    }
+    
+    func setCategorys(cate:CategoryQuiz) -> Void {
+        catequiz = cate
+    }
+    
+    func commitHighScore() -> Void {
+        
+        //identifier
+        let bestScoreInt: GKScore!
+        
+        switch catequiz {
+        case CategoryQuiz.dovuihainao:
+            bestScoreInt = GKScore(leaderboardIdentifier: "com.OlaStudio.tophoinguhainao")
+            break
+        case CategoryQuiz.dongthucvat:
+            bestScoreInt = GKScore(leaderboardIdentifier: "com.OlaStudio.topkienthuclichsu")
+            break
+        case CategoryQuiz.diadanhlichsu:
+            bestScoreInt = GKScore(leaderboardIdentifier: "com.OlaStudio.topdongthucvat")
+            break
+        case CategoryQuiz.kienthucthandong:
+            bestScoreInt = GKScore(leaderboardIdentifier: "com.OlaStudio.topkienthucthandong")
+            break
+        default:
+            bestScoreInt = GKScore(leaderboardIdentifier: "com.OlaStudio.tophoinguhainao")
+            break
+        }
+        
+        bestScoreInt.value = Int64(highScore)
+        GKScore.report([bestScoreInt]) { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            else {
+                print("Best Score submitted to your Leaderboard!")
+                let appearance = SCLAlertView.SCLAppearance(
+                    showCloseButton: false
+                )
+                
+                let alertView = SCLAlertView(appearance: appearance)
+                
+                alertView.addButton("Xem Bảng Xếp Hạng", action: {
+                    self.show_leaderboard()
+                })
+                alertView.addButton("Bỏ qua", action: {
+                    
+                })
+                
+                alertView.showSuccess("High score!", subTitle: "Bạn vừa đạt mức high score. Xem vị trí của bạn trên bảng xếp hạng")
+            }
+        }
+        
     }
 
     @IBAction func choiTiep_Action(_ sender: AnyObject) {
@@ -226,7 +263,7 @@ class TEndGameViewController: UIViewController, GADBannerViewDelegate, GADInters
         interstitial.delegate = self
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
+//        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
         
         interstitial.load(request)
         

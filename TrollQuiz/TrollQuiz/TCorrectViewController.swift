@@ -90,7 +90,7 @@ class TCorrectViewController: UIViewController, GADBannerViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
+//        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
         adsBanner.load(request)
     }
 

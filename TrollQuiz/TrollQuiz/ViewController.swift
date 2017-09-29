@@ -36,10 +36,6 @@ class ViewController: UIViewController, GADBannerViewDelegate, GKGameCenterContr
         
         authenticateLocalPlayer()
         
-        currentIndex = getCurrentIndex()
-        
-        initDataBase()
-        
         if UIDevice.current.userInterfaceIdiom == .phone{
             adsBanner = GADBannerView(adSize: kGADAdSizeBanner)
         }
@@ -57,35 +53,79 @@ class ViewController: UIViewController, GADBannerViewDelegate, GKGameCenterContr
         adsBanner.frame = CGRect.init(origin: CGPoint.init(x: rectSize.width/2 - bannerSize.width/2, y: 20), size: adsBanner.frame.size)
         
         self.view.addSubview(adsBanner)
+        
+        let ranImage = Int.random(lower: 0, 3)
+        var strImage = ""
+        
+        switch ranImage {
+        case 0:
+            strImage = "bamvaotoi"
+            break
+        case 1:
+            strImage = "clickme"
+            break
+        case 2:
+            strImage = "taptostart"
+            break
+        default:
+            strImage = "clickme"
+            break
+        }
+        
+        btStartGame.setImage(UIImage.init(named: strImage), for: UIControlState.normal)
+        
+        UIApplication.shared.cancelAllLocalNotifications()
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        registerDailyNoti()
+        register2hourlaterNoti()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
+//        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
         adsBanner.load(request)
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        
         initBackgroudMusic()
+    
+        pulsate()
+    }
+    
+    func pulsate() {
+        
+        if #available(iOS 9.0, *) {
+            let pulse = CASpringAnimation(keyPath: "transform.scale")
+            
+            pulse.duration = 0.6
+            pulse.fromValue = 0.92
+            pulse.toValue = 1.0
+            pulse.autoreverses = true
+            pulse.repeatCount = HUGE
+            pulse.initialVelocity = 1.5
+            pulse.damping = 1.0
+            pulse.mass = 0.5
+            
+            btStartGame.layer.add(pulse, forKey: "pulse")
+        } else {
+            // Fallback on earlier versions
+            
+            let pulse = CABasicAnimation(keyPath: "transform.scale")
+            pulse.duration = 0.6
+            pulse.fromValue = 0.92
+            pulse.toValue = 1.0
+            pulse.autoreverses = true
+            pulse.repeatCount = HUGE
+            
+            btStartGame.layer.add(pulse, forKey: "pulse")
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func initDataBase() -> Void {
-        let databasemanager = TDatabaseManager.sharedInstance()
-        
-        if (databasemanager!.open("quiztroll.sqlite")) {
-            
-            let strquery = "SELECT * FROM tb_dvhainaohoingu"
-            questions = databasemanager?.loadData(fromDB: strquery) as! [AnyObject]
-            
-            databasemanager?.close()
-        }
     }
     
     func initBackgroudMusic() -> Void{
@@ -94,26 +134,89 @@ class ViewController: UIViewController, GADBannerViewDelegate, GKGameCenterContr
         player.playSound(soundType: .Sound_Background)
     }
     
-    func getCurrentIndex() -> NSInteger {
+    func registerDailyNoti() -> Void {
         
-        return UserDefaults.standard.integer(forKey: "START_INDEX")
+        var dateComp:DateComponents = DateComponents.init()
+
+        dateComp.hour = 9;
+        dateComp.minute = 0;
+        dateComp.second = 0
+        dateComp.timeZone = NSTimeZone.default
+        
+        let calender:NSCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let date = calender.date(from: dateComp as DateComponents)!
+        
+        let notification:UILocalNotification = UILocalNotification()
+        notification.fireDate = date
+        notification.alertBody = selectDatabase()
+        notification.repeatInterval = NSCalendar.Unit.day
+            
+        UIApplication.shared.scheduleLocalNotification(notification)
+    }
+    
+    func register2hourlaterNoti() -> Void {
+        
+        let notification:UILocalNotification = UILocalNotification()
+        notification.fireDate = Date.init(timeIntervalSinceNow: 2*60*60)
+        notification.alertBody = selectDatabase()
+        notification.repeatInterval = NSCalendar.Unit.day
+        
+        UIApplication.shared.scheduleLocalNotification(notification)
+    }
+    
+    func selectDatabase() -> String{
+        let databasemanager = TDatabaseManager.sharedInstance()
+        
+        var result: [AnyObject]!
+        var strtable = ""
+        
+        let catequiz = Int.random(lower: 0, 3)
+        
+        switch catequiz {
+        case 0:
+            strtable = "tb_dvhainaohoingu"
+            break
+        case 1:
+            strtable = "tb_dvdongthucvat"
+            break
+        case 2:
+            strtable = "tb_dvdiadanhlichsu"
+            break
+        case 3:
+            strtable = "tb_dvkienthucthandong"
+            break
+        default:
+            strtable = "tb_dvhainaohoingu"
+            break
+        }
+        
+        let questions: [AnyObject]!
+        
+        if (databasemanager!.open("quiztroll.sqlite")) {
+            
+            var strquery = "SELECT * FROM \(strtable)"
+            questions = databasemanager?.loadData(fromDB: strquery) as! [AnyObject]
+            
+            let ranquestion = Int.random(lower: 0, questions.count)
+            
+            strquery = "Select cauhoi from \(strtable) where _id=\(ranquestion)"
+            result = databasemanager?.loadData(fromDB: strquery) as! [AnyObject]
+            
+            databasemanager?.close()
+        }
+        
+        if (result.count == 0) {
+            return "Hey!\n Long time no see.Comeback and have fun!"
+        }
+        
+        let obj = result[0] as! [String]
+        return obj[0]
     }
     
     @IBAction func startGame_Action(_ sender: AnyObject) {
         print("**************** Start Game *********************")
         
-//        if (mainview == nil) {
-//            mainview = self.storyboard?.instantiateViewController(withIdentifier: "idmainview") as! TMainViewController
-//            mainview.setupQuestions(question: questions)
-//            mainview.setupContent(initContent: questions[currentIndex] as! [String])
-//        }
-        
         PlaySoundManager.shared.playSound(soundType: .Sound_BtnTap)
-//        PlaySoundManager.shared.stopPlaySound()
-//        
-//        self.present(mainview, animated: true) {
-//            
-//        }
         
         if (categoryview == nil) {
             categoryview = self.storyboard?.instantiateViewController(withIdentifier: "idcategoryview") as! TCategoryViewController

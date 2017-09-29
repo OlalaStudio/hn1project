@@ -102,8 +102,6 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        currentIndex = UserDefaults.standard.integer(forKey: "START_INDEX")
-        
         var emoticons: [UIImage] = [
             UIImage.animatedImage(named: "funny")!,
             UIImage.animatedImage(named: "funny1")!,
@@ -123,7 +121,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
         PlaySoundManager.shared.playSound(soundType: .Sound_StartGame)
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
+//        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
         adsBanner.load(request)
     }
     
@@ -140,6 +138,53 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func getCurrentIndex() -> Int{
+        
+        var index = 0
+        
+        switch catequiz {
+        case CategoryQuiz.dovuihainao:
+            index = UserDefaults.standard.integer(forKey: "START_INDEX")
+            break
+        case CategoryQuiz.dongthucvat:
+            index = UserDefaults.standard.integer(forKey: "START_INDEX_DTV")
+            break
+        case CategoryQuiz.kienthucthandong:
+            index = UserDefaults.standard.integer(forKey: "START_INDEX_KTTD")
+            break
+        case CategoryQuiz.diadanhlichsu:
+            index = UserDefaults.standard.integer(forKey: "START_INDEX_DDLS")
+            break
+        default:
+            index = UserDefaults.standard.integer(forKey: "START_INDEX")
+            break
+        }
+        
+        
+        return index
+    }
+    
+    func registerCurrentIndex(cindex: Int) -> Void {
+        
+        switch catequiz {
+        case CategoryQuiz.dovuihainao:
+            UserDefaults.standard.set(cindex, forKey: "START_INDEX")
+            break
+        case CategoryQuiz.dongthucvat:
+            UserDefaults.standard.set(cindex, forKey: "START_INDEX_DTV")
+            break
+        case CategoryQuiz.kienthucthandong:
+            UserDefaults.standard.set(cindex, forKey: "START_INDEX_KTTD")
+            break
+        case CategoryQuiz.diadanhlichsu:
+            UserDefaults.standard.set(cindex, forKey: "START_INDEX_DDLS")
+            break
+        default:
+            UserDefaults.standard.set(cindex, forKey: "START_INDEX")
+            break
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -151,19 +196,96 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
     }
     */
     
+    func selectDatabase(rowid: String, columnid: String) -> String{
+        let databasemanager = TDatabaseManager.sharedInstance()
+        
+        var result: [AnyObject]!
+        var strtable = ""
+        
+        switch catequiz {
+        case CategoryQuiz.dovuihainao: 
+            strtable = "tb_dvhainaohoingu"
+            break
+        case CategoryQuiz.dongthucvat:
+            strtable = "tb_dvdongthucvat"
+            break
+        case CategoryQuiz.diadanhlichsu:
+            strtable = "tb_dvdiadanhlichsu"
+            break
+        case CategoryQuiz.kienthucthandong:
+            strtable = "tb_dvkienthucthandong"
+            break
+        }
+        
+        if (databasemanager!.open("quiztroll.sqlite")) {
+            
+            let strquery = "Select \(columnid) from \(strtable) where _id=\(rowid)"
+            result = databasemanager?.loadData(fromDB: strquery) as! [AnyObject]
+            
+            databasemanager?.close()
+        }
+        
+        if (result.count == 0) {
+            
+            let ranIndex = Int.random(lower: 0, 5)
+            
+            let result = checkResult(answer: state)
+            
+            if result == true {
+                switch ranIndex {
+                case 0:
+                    return "Sao bạn biết hay vại."
+                case 1:
+                    return "Chuẩn như lê duẩn."
+                case 2:
+                    return "Bác là thiên tài à."
+                case 3:
+                    return "Thật không thể tin nổi."
+                case 4:
+                    return "Chính xác rồi đó bạn. Tiếp tục đi nào!"
+                default:
+                    return "Wow, Xin chúc mừng bác đã vượt qua câu hỏi vừa rồi!"
+                }
+            }
+            else{
+                switch ranIndex {
+                case 0:
+                    return "Quá hay luôn, không biết nói gì hơn. Chúc bạn may mắn lần sau nha."
+                case 1:
+                    return "Suy nghĩ kĩ rồi trả lời lại nào."
+                case 2:
+                    return "Báo bác tin vui là bác trả lời sai rùi nhoé.Hihi!"
+                case 3:
+                    return "Sai rồi nhé!"
+                case 4:
+                    return "Bạn trả lời hay quá. Nhưng không phải đáp án này đâu."
+                default:
+                    return "Cố lên nào!"
+                }
+            }
+            
+        }
+        
+        let obj = result[0] as! [String]
+        return obj[0]
+    }
+    
     func initContent() -> Void {
         
+        currentIndex = Int.random(lower: 0, questions.count)
         content = questions[currentIndex] as! [String]
         
-        txtQuestion.text = content[1]
-        lbA.text = content[2]
-        lbB.text = content[3]
-        lbC.text = content[4]
-        lbD.text = content[5]
+        questions.remove(at: currentIndex)
         
-        user = content[11]
+        txtQuestion.text = self.selectDatabase(rowid: content[0] , columnid: "cauhoi") //content[1]
+        lbA.text = self.selectDatabase(rowid: content[0] , columnid: "a") //content[2]
+        lbB.text = self.selectDatabase(rowid: content[0], columnid: "b") //content[3]
+        lbC.text = self.selectDatabase(rowid: content[0], columnid: "c") //content[4]
+        lbD.text = self.selectDatabase(rowid: content[0], columnid: "d") //content[5]
         
-        txtUser.text = ""//content[11]
+        user = self.selectDatabase(rowid: content[0], columnid: "nickname") //content[11]
+        
+        txtUser.text = ""
     }
     
     func setupContent(initContent : [String]) -> Void {
@@ -189,7 +311,12 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
         txtScore.text = "\(yourScore)"
     }
     
+    
+    
     @IBAction func backHome_Action(_ sender: AnyObject) {
+        
+        resetContent()
+        
         self.dismiss(animated: true) { 
             
         }
@@ -277,16 +404,16 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
         
         switch state {
         case .AnwserA:
-            strResult = content[7]
+            strResult = self.selectDatabase(rowid: content[0] , columnid: "gt_a") //content[7]
             break
         case .AnwserB:
-            strResult = content[8]
+            strResult = self.selectDatabase(rowid: content[0] , columnid: "gt_b") //content[8]
             break
         case .AnwserC:
-            strResult = content[9]
+            strResult = self.selectDatabase(rowid: content[0] , columnid: "gt_c") //content[9]
             break
         case .AnwserD:
-            strResult = content[10]
+            strResult = self.selectDatabase(rowid: content[0] , columnid: "gt_d") //content[10]
             break
         default:
             strResult = ""
@@ -305,7 +432,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
             
             txtScore.text = "\(yourScore)"
             
-            UserDefaults.standard.set(currentIndex, forKey: "START_INDEX")
+            registerCurrentIndex(cindex: currentIndex)
         }
         
         if (remainTurn == 0) {
@@ -320,22 +447,15 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
                 self.remainTurn += 1
                 self.watch_video()
             })
-            alertView.addButton("Rate app", action: {
-                self.remainTurn += 1
-                self.rate_action()
-            })
-            alertView.addButton("Chia sẻ", action: {
-                self.remainTurn += 1
-                self.share_action()
-            })
             alertView.addButton("Bỏ qua", action: { 
                 self.endview = self.storyboard?.instantiateViewController(withIdentifier: "idendgameview") as! TEndGameViewController
                 self.endview.delegate = self
                 self.endview.setYourScore(score: self.yourScore)
+                self.endview.setCategorys(cate: self.catequiz)
                 
                 self.currentIndex += 1
-                
-                UserDefaults.standard.set(self.currentIndex, forKey: "START_INDEX")
+
+                self.registerCurrentIndex(cindex: self.currentIndex)
                 
                 self.resetContent()
                 
@@ -345,7 +465,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
                 
             })
             
-            alertView.showSuccess("Hết lượt chơi!", subTitle: "Chọn 1 trong 3 thao tác bên dưới để có thêm lượt chơi")
+            alertView.showSuccess("Hết lượt chơi!", subTitle: "Bấm xem video để có thêm lượt chơi")
         }
         else{
             if (result) {
@@ -413,7 +533,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
     
     func checkResult(answer: AnwserState) -> Bool {
         
-        let strAnwser = content[6]
+        let strAnwser = self.selectDatabase(rowid: content[0] , columnid: "dapandung") //content[6]
         var correntstate = AnwserState.unknow
         
         if (strAnwser.uppercased() == "A") {
@@ -437,6 +557,8 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
     }
     
     func refreshMainView(){
+        
+        currentIndex = getCurrentIndex()
         
         initContent()
         
@@ -481,7 +603,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
         self.txtCount.text = "Lượt Ngu : \(self.remainTurn)"
         
         let request = GADRequest()
-        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
+//        request.testDevices = [kGADSimulatorID,"aea500effe80e30d5b9edfd352b1602d"]
         
         GADRewardBasedVideoAd.sharedInstance().delegate = self
         GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-4039533744360639/3137557984")
@@ -489,7 +611,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
     
     func rate_action(){
         print("rate")
-        self.txtCount.text = "Lượt Ngu : \(self.remainTurn)"
+        self.txtCount.text = "Lượt chơi : \(self.remainTurn)"
         
         var rateUsInfo = MBRateUsInfo() //get the default settings
         
@@ -520,7 +642,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
     
     func share_action(){
         print("share")
-        self.txtCount.text = "Lượt Ngu : \(self.remainTurn)"
+        self.txtCount.text = "Lượt chơi : \(self.remainTurn)"
         
         let itunesId = "1265597029"
         

@@ -24,7 +24,10 @@ class TCategoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        initBackgroudMusic()
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -34,6 +37,35 @@ class TCategoryViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func initDataBase(strtable: String) -> [AnyObject] {
+        let databasemanager = TDatabaseManager.sharedInstance()
+        
+        var questions: [AnyObject]!
+        
+        if (databasemanager!.open("quiztroll.sqlite")) {
+            
+            //tb_dvhainaohoingu
+            let strquery = "SELECT * FROM \(strtable)"
+            questions = databasemanager?.loadData(fromDB: strquery) as! [AnyObject]
+            
+            databasemanager?.close()
+        }
+        
+        return questions
+    }
+    
+    func initBackgroudMusic() -> Void{
+        let player = PlaySoundManager.shared
+        player.prepareForSound()
+        player.playSound(soundType: .Sound_Background)
+    }
+
+    @IBAction func back_Action(_ sender: AnyObject) {
+        self.dismiss(animated: true) {
+            
+        }
+    }
 
     @IBAction func dovuihainao_Action(_ sender: AnyObject) {
     
@@ -42,6 +74,7 @@ class TCategoryViewController: UIViewController {
         }
         
         mainview.catequiz = CategoryQuiz.dovuihainao
+        mainview.setupQuestions(question: initDataBase(strtable: "tb_dvhainaohoingu"))
         
         PlaySoundManager.shared.playSound(soundType: .Sound_BtnTap)
         PlaySoundManager.shared.stopPlaySound()
@@ -58,6 +91,7 @@ class TCategoryViewController: UIViewController {
         }
         
         mainview.catequiz = CategoryQuiz.dongthucvat
+        mainview.setupQuestions(question: initDataBase(strtable: "tb_dvdongthucvat"))
         
         PlaySoundManager.shared.playSound(soundType: .Sound_BtnTap)
         PlaySoundManager.shared.stopPlaySound()
@@ -76,6 +110,7 @@ class TCategoryViewController: UIViewController {
         }
         
         mainview.catequiz = CategoryQuiz.diadanhlichsu
+        mainview.setupQuestions(question: initDataBase(strtable: "tb_dvdiadanhlichsu"))
         
         PlaySoundManager.shared.playSound(soundType: .Sound_BtnTap)
         PlaySoundManager.shared.stopPlaySound()
@@ -92,6 +127,7 @@ class TCategoryViewController: UIViewController {
         }
         
         mainview.catequiz = CategoryQuiz.kienthucthandong
+        mainview.setupQuestions(question: initDataBase(strtable: "tb_dvkienthucthandong"))
         
         PlaySoundManager.shared.playSound(soundType: .Sound_BtnTap)
         PlaySoundManager.shared.stopPlaySound()
