@@ -10,13 +10,13 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="idstartview" id="BYZ-38-t0r" customClass="ViewController" customModule="DoVui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="idstartview" id="BYZ-38-t0r" customClass="ViewController" customModule="TrollQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1.png" translatesAutoresizingMaskIntoConstraints="NO" id="5gk-pn-rlt"/>
@@ -90,13 +90,13 @@
         <!--Main View Controller-->
         <scene sceneID="C2Y-Yf-4AL">
             <objects>
-                <viewController storyboardIdentifier="idmainview" id="8Rc-2Z-LaT" customClass="TMainViewController" customModule="DoVui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="idmainview" id="8Rc-2Z-LaT" customClass="TMainViewController" customModule="TrollQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MDJ-bD-a8K"/>
                         <viewControllerLayoutGuide type="bottom" id="E1j-r8-vAd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dyk-C8-sQv">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="uXp-1B-VgP"/>
@@ -338,13 +338,13 @@
         <!--Result View Controller-->
         <scene sceneID="mIC-By-Igs">
             <objects>
-                <viewController storyboardIdentifier="idresultview" id="WAg-na-cxa" customClass="TResultViewController" customModule="DoVui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="idresultview" id="WAg-na-cxa" customClass="TResultViewController" customModule="TrollQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yz3-uc-7vW"/>
                         <viewControllerLayoutGuide type="bottom" id="Ne1-Aq-lim"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XKE-dM-cyh">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q31-sv-qu9">
@@ -404,13 +404,13 @@
         <!--Correct View Controller-->
         <scene sceneID="NHR-Rd-Uzb">
             <objects>
-                <viewController storyboardIdentifier="idcorrectview" id="yQU-Do-J6a" customClass="TCorrectViewController" customModule="DoVui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="idcorrectview" id="yQU-Do-J6a" customClass="TCorrectViewController" customModule="TrollQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jec-Gv-evL"/>
                         <viewControllerLayoutGuide type="bottom" id="rR4-4L-vm6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PvO-5P-dKr">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="7vD-gd-SP9"/>
@@ -426,14 +426,13 @@
                                     <action selector="hoitiepde_Action:" destination="yQU-Do-J6a" eventType="touchUpInside" id="6AK-kz-woR"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="BDi-XG-NJv">
-                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lgjds l gnjlsd l lgs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="BDi-XG-NJv">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="520" id="N4F-mq-9iL"/>
+                                    <constraint firstAttribute="width" constant="505" id="N4F-mq-9iL"/>
                                     <constraint firstAttribute="height" constant="105" id="ks7-ZB-1OR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wow.png" translatesAutoresizingMaskIntoConstraints="NO" id="E2K-3d-OJd">
@@ -442,19 +441,27 @@
                                     <constraint firstAttribute="width" constant="520" id="Ywa-4n-Ur2"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hintframe.png" translatesAutoresizingMaskIntoConstraints="NO" id="kY1-aA-aPK">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Din-PH-iDW"/>
+                                    <constraint firstAttribute="width" constant="520" id="GqT-n8-bUP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7vD-gd-SP9" secondAttribute="trailing" id="A5U-Hf-lNX"/>
                             <constraint firstItem="7vD-gd-SP9" firstAttribute="leading" secondItem="PvO-5P-dKr" secondAttribute="leading" id="HhI-B7-hSU"/>
+                            <constraint firstItem="kY1-aA-aPK" firstAttribute="centerY" secondItem="PvO-5P-dKr" secondAttribute="centerY" constant="2" id="I9e-ax-HzW"/>
                             <constraint firstItem="BDi-XG-NJv" firstAttribute="centerX" secondItem="PvO-5P-dKr" secondAttribute="centerX" id="Jti-6V-zTQ"/>
                             <constraint firstItem="rR4-4L-vm6" firstAttribute="top" secondItem="7vD-gd-SP9" secondAttribute="bottom" id="Lmd-Pp-qpq"/>
-                            <constraint firstItem="1nj-7P-7PE" firstAttribute="centerY" secondItem="PvO-5P-dKr" secondAttribute="centerY" constant="280" id="aUr-lL-xaS"/>
+                            <constraint firstItem="kY1-aA-aPK" firstAttribute="centerX" secondItem="PvO-5P-dKr" secondAttribute="centerX" id="VZ1-Ia-Fjr"/>
+                            <constraint firstItem="1nj-7P-7PE" firstAttribute="centerY" secondItem="PvO-5P-dKr" secondAttribute="centerY" constant="290" id="aUr-lL-xaS"/>
                             <constraint firstItem="BDi-XG-NJv" firstAttribute="centerY" secondItem="PvO-5P-dKr" secondAttribute="centerY" constant="-20" id="dHF-Vn-zyP"/>
                             <constraint firstItem="7vD-gd-SP9" firstAttribute="top" secondItem="PvO-5P-dKr" secondAttribute="top" id="fIP-wt-0Jd"/>
                             <constraint firstItem="UFP-fl-Tbn" firstAttribute="centerX" secondItem="PvO-5P-dKr" secondAttribute="centerX" id="gXf-os-47y"/>
                             <constraint firstItem="E2K-3d-OJd" firstAttribute="centerY" secondItem="PvO-5P-dKr" secondAttribute="centerY" constant="-270" id="nym-wY-FZF"/>
-                            <constraint firstItem="UFP-fl-Tbn" firstAttribute="centerY" secondItem="PvO-5P-dKr" secondAttribute="centerY" constant="140" id="oIw-1D-sdx"/>
+                            <constraint firstItem="UFP-fl-Tbn" firstAttribute="centerY" secondItem="PvO-5P-dKr" secondAttribute="centerY" constant="160" id="oIw-1D-sdx"/>
                             <constraint firstItem="1nj-7P-7PE" firstAttribute="centerX" secondItem="PvO-5P-dKr" secondAttribute="centerX" id="rVn-nv-zix"/>
                             <constraint firstItem="E2K-3d-OJd" firstAttribute="centerX" secondItem="PvO-5P-dKr" secondAttribute="centerX" id="u1k-nR-GnJ"/>
                         </constraints>
@@ -473,13 +480,13 @@
         <!--Setup View Controller-->
         <scene sceneID="Hgn-Vh-i8l">
             <objects>
-                <viewController storyboardIdentifier="idsetupview" id="hfT-mg-cgO" customClass="TSetupViewController" customModule="DoVui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="idsetupview" id="hfT-mg-cgO" customClass="TSetupViewController" customModule="TrollQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ode-ob-NJ1"/>
                         <viewControllerLayoutGuide type="bottom" id="OC6-wZ-LY8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aNJ-Ob-bDC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background3.png" translatesAutoresizingMaskIntoConstraints="NO" id="5cu-Ep-exN"/>
@@ -554,13 +561,13 @@
         <!--Category View Controller-->
         <scene sceneID="iiZ-pb-OH5">
             <objects>
-                <viewController storyboardIdentifier="idcategoryview" id="xWc-ZM-9wm" customClass="TCategoryViewController" customModule="DoVui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="idcategoryview" id="xWc-ZM-9wm" customClass="TCategoryViewController" customModule="TrollQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HMg-X8-320"/>
                         <viewControllerLayoutGuide type="bottom" id="AQT-L5-oy0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cBp-4K-8fi">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1.png" translatesAutoresizingMaskIntoConstraints="NO" id="gll-J9-R6z"/>
@@ -657,13 +664,13 @@
         <!--End Game View Controller-->
         <scene sceneID="yZA-pp-iEw">
             <objects>
-                <viewController storyboardIdentifier="idendgameview" id="H3D-6E-4LR" customClass="TEndGameViewController" customModule="DoVui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="idendgameview" id="H3D-6E-4LR" customClass="TEndGameViewController" customModule="TrollQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AJ8-d5-lgd"/>
                         <viewControllerLayoutGuide type="bottom" id="GlZ-8n-HNl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nVr-is-bJg">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Phv-X0-Zr2"/>
@@ -784,6 +791,7 @@
         <image name="dongthucvat.png" width="640" height="113"/>
         <image name="dovuihainao.png" width="640" height="113"/>
         <image name="flags_4-hd.png" width="970" height="280"/>
+        <image name="hintframe.png" width="290" height="89"/>
         <image name="kienthucthandong.png" width="640" height="113"/>
         <image name="layer1.png" width="212" height="226"/>
         <image name="layer3.png" width="226" height="232"/>

@@ -109,6 +109,7 @@
 		EA268E671F7A5481004A457B /* taptostart.png in Resources */ = {isa = PBXBuildFile; fileRef = EA268E641F7A5481004A457B /* taptostart.png */; };
 		EAC159BA1F70F09500A80586 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EAC159B91F70F09500A80586 /* Reachability.m */; };
 		EAC159BC1F70FA2500A80586 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = EAC159BB1F70FA2500A80586 /* setting.png */; };
+		EAE5B5531F84C2E500964AAE /* hintframe.png in Resources */ = {isa = PBXBuildFile; fileRef = EAE5B5521F84C2E500964AAE /* hintframe.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -221,6 +222,7 @@
 		EAC159B81F70F09500A80586 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		EAC159B91F70F09500A80586 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		EAC159BB1F70FA2500A80586 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		EAE5B5521F84C2E500964AAE /* hintframe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hintframe.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +395,7 @@
 		BF54020E1F2B234B005E56FC /* Frame */ = {
 			isa = PBXGroup;
 			children = (
+				EAE5B5521F84C2E500964AAE /* hintframe.png */,
 				BF54020F1F2B234B005E56FC /* Banner.png */,
 				BF5402101F2B234B005E56FC /* Board.png */,
 				BF5402111F2B234B005E56FC /* flags_4-hd.png */,
@@ -574,6 +577,7 @@
 				BF5402331F2B234B005E56FC /* orangebutton.png in Resources */,
 				BF5402531F2B234B005E56FC /* wtf.png in Resources */,
 				BF5402521F2B234B005E56FC /* wow1.png in Resources */,
+				EAE5B5531F84C2E500964AAE /* hintframe.png in Resources */,
 				BF5402511F2B234B005E56FC /* wow.png in Resources */,
 				BFB6FD911F2C8DA5000CCF61 /* btcauquachoilaiphat.png in Resources */,
 				BF5402441F2B234B005E56FC /* layer3.png in Resources */,

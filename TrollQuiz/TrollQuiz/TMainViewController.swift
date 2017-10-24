@@ -272,7 +272,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
     
     func initContent() -> Void {
         
-        currentIndex = Int.random(lower: 0, questions.count)
+        currentIndex = Int.random(lower: 0, questions.count - 1)
         content = questions[currentIndex] as! [String]
         
         questions.remove(at: currentIndex)
@@ -465,7 +465,7 @@ class TMainViewController: UIViewController, TResultViewDelegate, TCorrectViewPr
                 
             })
             
-            alertView.showSuccess("Hết lượt chơi!", subTitle: "Bấm xem video để có thêm lượt chơi")
+            alertView.showSuccess("Hết lượt chơi!", subTitle: "Lựa chọn xem video để có thêm lượt chơi nhé.")
         }
         else{
             if (result) {

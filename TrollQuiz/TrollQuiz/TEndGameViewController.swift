@@ -42,7 +42,6 @@ class TEndGameViewController: UIViewController, GADBannerViewDelegate, GADInters
         
         highScore = UserDefaults.standard.integer(forKey: "HIGH_SCORE")
         
-        yourScore = highScore + 1
         if (yourScore > highScore) {
             highScore = yourScore
             
