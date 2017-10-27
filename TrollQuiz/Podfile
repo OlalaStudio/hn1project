@@ -13,5 +13,4 @@ target 'TrollQuiz' do
   pod 'MBRateApp'
   pod 'EZLoadingActivity'
   pod 'Google-Mobile-Ads-SDK'
-  
 end
